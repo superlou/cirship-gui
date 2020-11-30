@@ -1,0 +1,12 @@
+<DisplayArea as |sim|>
+  <Panel @title="Panel 1">
+    <ValueBar @title="Bus A Load" @min={{0}} @max={{1}} @value={{sim.simState.random1}}/>
+    <ValueBar @title="Bus B Load" @min={{0}} @max={{100}} @value={{sim.simState.random2}}/>
+  </Panel>
+  <Panel @title="Panel 2">
+    <p>{{sim.simState.resistor_i}}</p>
+    <p>{{sim.simState.b1_isOpen}}</p>
+    <button {{on 'click' (fn sim.pulseBool 'b1Close' true)}}>Push</button>
+    <button {{on 'click' (fn sim.pulseBool 'b1Open' true)}}>Pull</button>
+  </Panel>
+</DisplayArea>
