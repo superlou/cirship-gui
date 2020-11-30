@@ -11,6 +11,7 @@ export default class SimConnService extends Service {
 
   constructor() {
     super(...arguments);
+    this.simState = {};
     const socket = this.websockets.socketFor('ws://localhost:8765/');
     console.log(socket);
     socket.on('open', this.openHandler, this);
@@ -22,11 +23,48 @@ export default class SimConnService extends Service {
 
   openHandler(event) {
     console.log(`Websocket opened: ${event}`);
+
+    let msg = {
+      type: 'watch',
+      real: ['b1.currentSensor.i'],
+      bool: ['b1.isOpen'],
+    }
+    this.socketRef.send(JSON.stringify(msg));
   }
 
   messageHandler(event) {
-    this.simState = JSON.parse(event.data).data;
+    let data = JSON.parse(event.data).data;
+    if (data === undefined) {
+      return;
+    }
+
+    const refs = Object.keys(data);
+
+    let obj = {};
+
+    refs.forEach((ref, index) => {
+      this.addRef(obj, ref, data[ref]);
+    });
+
+    this.simState = obj;
   }
+
+  addRef(obj, ref, value) {
+    let tokens = ref.split('.');
+
+    let currentObj = obj;
+    let last_token = tokens.pop();
+
+    tokens.forEach((token) => {
+      if (!(token in currentObj)) {
+        currentObj[token] = {};
+      }
+      currentObj = currentObj[token]
+    });
+
+    currentObj[last_token] = value;
+  }
+
 
   closeHandler(event) {
     const socket = this.websockets.socketFor('ws://localhost:8765');
