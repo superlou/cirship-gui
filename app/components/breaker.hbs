@@ -1,0 +1,8 @@
+<div class="breaker">
+  <div class="state {{if @isOpen 'open' 'closed'}}"></div>
+  <div class="title">{{@title}}</div>
+  <div class='buttons'>
+    <button {{on 'click' (fn simConn.pulseBool @close true)}}>Push</button>
+    <button {{on 'click' (fn simConn.pulseBool @open true)}}>Pull</button>
+  </div>
+</div>

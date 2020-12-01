@@ -6,8 +6,6 @@
               @unit="A"/>
   </Panel>
   <Panel @title="Panel 2">
-    <p>{{sim.simState.b1.isOpen}}</p>
-    <button {{on 'click' (fn sim.pulseBool 'b1Close' true)}}>Push</button>
-    <button {{on 'click' (fn sim.pulseBool 'b1Open' true)}}>Pull</button>
+    <Breaker @title="B1" @isOpen={{sim.simState.b1.isOpen}} @open="b1Open" @close="b1Close"/>
   </Panel>
 </DisplayArea>

@@ -78,3 +78,49 @@ body {
     transition-duration: 0.2s;
   }
 }
+
+.breaker {
+  display: flex;
+  align-items: center;
+
+  .state {
+    width: 21px;
+    height: 21px;
+    border: 1px solid white;
+    padding: 1px;
+
+    &.closed {
+      background: green;
+    }
+
+    &.open {
+      background: black;
+    }
+  }
+
+  .title {
+    flex-grow: 1;
+    margin: 0px 8px;
+  }
+
+  .buttons {
+    font-size: 0;
+
+    button {
+      font-size: 14px;
+      background: #248;
+      border: none;
+      color: white;
+      padding: 4px 8px;
+      margin: 0px 8px;
+    }
+
+    button:last-child {
+      margin: 0px;
+    }
+
+    button:active {
+      background: #36e;
+    }
+  }
+}
