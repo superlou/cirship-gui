@@ -13,7 +13,6 @@ export default class SimConnService extends Service {
     super(...arguments);
     this.simState = {};
     const socket = this.websockets.socketFor('ws://localhost:8765/');
-    console.log(socket);
     socket.on('open', this.openHandler, this);
     socket.on('message', this.messageHandler, this);
     socket.on('close', this.closeHandler, this);
