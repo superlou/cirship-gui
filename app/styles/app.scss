@@ -1,5 +1,6 @@
 @use "sass:color";
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
+@use "buttons.scss";
+@import url(https://fonts.googleapis.com/css2?family=Inconsolata&display=swap);
 
 $background: #24292D;
 $panel-header-bg: lighten($background, 3%);
@@ -104,8 +105,8 @@ body {
   align-items: center;
 
   .state {
-    width: 24px;
-    height: 24px;
+    width: 29px;
+    height: 29px;
     border-radius: 2px;
 
     &.closed {
@@ -120,32 +121,5 @@ body {
   .title {
     flex-grow: 1;
     margin: 0px 8px;
-  }
-
-  .buttons {
-    font-size: 0;
-
-    button {
-      font-size: 14px;
-      background: #7a7a7a;
-      border-radius: 2px;
-      border-left: none;
-      border-right: none;
-      border-top: 2px solid #7a7a7a;
-      border-bottom: 2px solid darken(#7a7a7a, 20%);
-      color: white;
-      padding: 4px 8px;
-      margin: 0px 8px;
-    }
-
-    button:last-child {
-      margin: 0px;
-    }
-
-    button:active {
-      background: darken(#7a7a7a, 20%);
-      border-top: 2px solid darken(#7a7a7a, 30%);
-      border-bottom: none;
-    }
   }
 }

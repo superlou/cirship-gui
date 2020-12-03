@@ -1,0 +1,26 @@
+button {
+  font-size: 14px;
+  background: #7a7a7a;
+  border-radius: 2px;
+  border-left: none;
+  border-right: none;
+  border-top: 2px solid #7a7a7a;
+  border-bottom: 2px solid darken(#7a7a7a, 20%);
+  color: white;
+  padding: 4px 8px;
+  margin: 0px 8px;
+}
+
+button:active {
+  background: darken(#7a7a7a, 20%);
+  border-top: 2px solid darken(#7a7a7a, 30%);
+  border-bottom: none;
+}
+
+.button-group {
+  font-size: 0;
+
+  & button:last-child {
+    margin: 0px;
+  }
+}
