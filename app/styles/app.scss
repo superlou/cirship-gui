@@ -1,4 +1,18 @@
+@use "sass:color";
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
+
+$background: #24292D;
+$panel-header-bg: lighten($background, 3%);
+$panel-bg: lighten($background, 3%);
+$shadow: darken($background, 8%);
+$header-text-color: white;
+$text-color: #aaa;
+
+$info-color: white;
+$normal-color: #27c1b6;
+$advisory-color: white;
+$caution-color: #f6ae50;
+$warning-color: #dc4630;
 
 body {
   padding: 0px;
@@ -15,28 +29,34 @@ body {
   bottom: 0px;
   left: 0px;
   right: 0px;
-  background: black;
+  background: $background;
 }
 
 .panel {
   width: 300px;
-  border: 1px solid #48f;
   position: relative;
-  margin: 10px;
-  // border-radius: 4px;
+  margin: 20px;
+  filter: drop-shadow(0px 0px 2px $shadow);
 
   .panel-header {
-    padding: 4px;
-    background: #48f;
-    color: #aef;
-    // text-transform: uppercase;
-    // border-radius: 4px 4px 0px 0px;
+    padding: 1em;
+    background: $panel-header-bg;
+    border-bottom: 1px solid $shadow;
+    color: $header-text-color;
   }
 
   .panel-content {
-    padding: 10px;
-    background: #124;
-    color: white;
+    background: $panel-bg;
+    color: $text-color;
+
+    & > div {
+      padding: 10px 10px;
+      border-bottom: 1px solid $shadow;
+    }
+
+    & > div:last-child {
+      border-bottom: 0px;
+    }
   }
 }
 
@@ -59,9 +79,9 @@ body {
     height: 4px;
     background: linear-gradient(to right,
                             #adf 50%,
-                            green 50%, green 80%,
-                            yellow 80%, yellow 95%,
-                            red 95%, red 80%);
+                            $normal-color 50%, $normal-color 80%,
+                            $caution-color 80%, $caution-color 95%,
+                            $warning-color 95%, $warning-color 80%);
     width: 100%;
   }
 
@@ -84,17 +104,16 @@ body {
   align-items: center;
 
   .state {
-    width: 21px;
-    height: 21px;
-    border: 1px solid white;
-    padding: 1px;
+    width: 24px;
+    height: 24px;
+    border-radius: 2px;
 
     &.closed {
-      background: green;
+      background: $normal-color;
     }
 
     &.open {
-      background: black;
+      background: $warning-color;
     }
   }
 
@@ -108,8 +127,12 @@ body {
 
     button {
       font-size: 14px;
-      background: #248;
-      border: none;
+      background: #7a7a7a;
+      border-radius: 2px;
+      border-left: none;
+      border-right: none;
+      border-top: 2px solid #7a7a7a;
+      border-bottom: 2px solid darken(#7a7a7a, 20%);
       color: white;
       padding: 4px 8px;
       margin: 0px 8px;
@@ -120,7 +143,9 @@ body {
     }
 
     button:active {
-      background: #36e;
+      background: darken(#7a7a7a, 20%);
+      border-top: 2px solid darken(#7a7a7a, 30%);
+      border-bottom: none;
     }
   }
 }

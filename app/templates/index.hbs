@@ -1,11 +1,11 @@
 <DisplayArea as |sim|>
-  <Panel @title="Panel 1">
+  <Panel @title="Electrical">
     <ValueBar @title="Bus A Load"
               @min={{0}} @max={{1}}
               @value={{sim.simState.b1.currentSensor.i}}
               @unit="A"/>
   </Panel>
-  <Panel @title="Panel 2">
+  <Panel @title="Breakers">
     <Breaker @title="B1" @isOpen={{sim.simState.b1.isOpen}} @open="b1Open" @close="b1Close"/>
   </Panel>
 </DisplayArea>

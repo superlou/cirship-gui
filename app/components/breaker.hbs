@@ -1,5 +1,7 @@
 <div class="breaker">
-  <div class="state {{if @isOpen 'open' 'closed'}}"></div>
+  <div class="state {{if @isOpen 'open' 'closed'}}">
+    <img src="icons/breaker-{{if @isOpen 'open' 'closed'}}.svg"/>
+  </div>
   <div class="title">{{@title}}</div>
   <div class='buttons'>
     <button {{on 'click' (fn simConn.pulseBool @close true)}}>Push</button>
