@@ -8,4 +8,18 @@
   <Panel @title="Breakers">
     <Breaker @title="B1" @isOpen={{sim.simState.b1.isOpen}} @open="b1Open" @close="b1Close"/>
   </Panel>
+  <Panel @title="Environment">
+    <ValueBar @title="Pressure"
+              @min={{0}} @max={{2}}
+              @value={{div sim.simState.env.pressure 101325}}
+              @unit="atm"/>
+    <ValueBar @title="O2"
+              @min={{0}} @max={{30}}
+              @value={{mult (div sim.simState.env.o2Mass.y sim.simState.env.totalMass.y) 100}}
+              @unit="%"/>
+    <ValueBar @title="CO2"
+              @min={{0}} @max={{5}}
+              @value={{mult (div sim.simState.env.co2Mass.y sim.simState.env.totalMass.y) 100}}
+              @unit="%"/>
+  </Panel>
 </DisplayArea>

@@ -25,7 +25,11 @@ export default class SimConnService extends Service {
 
     let msg = {
       type: 'watch',
-      real: ['b1.currentSensor.i'],
+      real: ['b1.currentSensor.i',
+             'env.pressure',
+             'env.o2Mass.y',
+             'env.co2Mass.y',
+             'env.totalMass.y'],
       bool: ['b1.isOpen'],
     }
     this.socketRef.send(JSON.stringify(msg));
